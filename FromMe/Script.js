@@ -1,5 +1,5 @@
 //* TITLE FromMe **//
-//* VERSION 1.0.4 **//
+//* VERSION 1.1.0 **//
 //* DESCRIPTION	Adds special indicator for when someone reblogs from you**//
 //* DEVELOPER devtimezombie **//
 //* FRAME false **//
