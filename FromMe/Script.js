@@ -32,17 +32,17 @@ XKit.extensions.FromMe = new Object({
 
 	annotate_reblog: function() {
 		var _mainBlogValue = XKit.extensions.FromMe.preferences.main_blog.value
-		$.each($("._1DxdS").find('._1Wz4U'), function() {
-			//console.log($(this).find("._1vRpg").text() );
-			if($(this).find("._1vRpg").text() == _mainBlogValue){
-				var postContols = $(this).find("._1kqDq");
-				
-				if($(postContols).find(".checked").length != 1){
-					$(postContols).prepend('<div class="checked" style="margin: 10px 0 10px 12px; display: inline-block; height: 24px; width: 24px;"><p style="font-size:20px; line-height: 22px;">✅</p></div>');
-					//$(postContols).prepend('<div class="checked"><p>✅</p></div>');
-				}
-			}
-		});
+                var _text = '<div class="checked" style="margin: 10px 0 10px 12px; display: inline-block; height: 24px; width: 24px;"><p style="font-size:20px; line-height: 22px;">✅</p></div>';
+
+                $.each($('article'), function() {
+                        var header = $(this).find('header');
+                        if (!$(header).hasClass("fromMeScanned")) {
+                                $(header).addClass( "fromMeScanned" );
+                                if($(header).attr("aria-label").includes(_mainBlogValue)){
+                                        $(this).find('footer').find("[aria-label='Reblog']").parent().parent().prepend(_text);
+                                }
+                        }
+                });
 	},
 
 	destroy: function() {
